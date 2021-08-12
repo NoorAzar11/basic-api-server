@@ -20,7 +20,7 @@ async function getData(req, res) {
 
 async function bringOne(req, res) {
     const id = parseInt(req.params.id); 
-   const foodData = await Food.findOne({ where: {id: id} });
+   const foodData = await Food.findOne({ where: {id: id}});
     res.status(200).json(foodData);
 }
 
@@ -32,10 +32,10 @@ async function createData(req, res) {
 
 async function updateData(req, res) {
    const id = parseInt(req.params.id);
-    const  obj = req.body;
-    const  foundData = await Food.findOne({ where: {id: id} });
-    const  updatedFood = await foundData.update(obj);
-    res.status(200).json(updatedFood);
+    const obj = req.body;
+    const foundData = await Food.findOne({ where: {id: id}});
+    const updated = await foundData.update(obj);
+    res.status(200).json(updated);
 }
 
 async function deleteData(req,res) {

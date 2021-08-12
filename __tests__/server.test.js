@@ -5,6 +5,7 @@ const server = require('../src/server');
 const supertest = require('supertest');
 const request = supertest(server.app);
 
+const obj={id:1 ,foodDatatype:"hello from the otherside"}
 
 describe('creating testing Unites', () => {
 
@@ -19,31 +20,35 @@ describe('creating testing Unites', () => {
 
     
 it('handles not found requset try again 2',async()=>{
-    const response=await request.get('/food');
+    const response=await request.post('/tryagain');
     expect(response.status).toEqual(404);
 });
 
 it('handles not found requset try again 2',async()=>{
-
-    let obj={
-        foodDatatype:"hello"
-
-    }
-
-    const response=await (await request.put('/food/1')).send(obj);
+    const response=await request.post('/food').send(obj);
     expect(response.status).toEqual(200);
 });
 
     it('testing Data we get from API ', async () => {
-        const res = await request.get('/food1');
-        expect(res.status).toEqual(200);
-        expect(typeof res.body).toEqual('object'); 
+const res= await request.get('/food');
+expect(res.status).toEqual(200);
+    });
 
-    it('testing by creating new data', async () => {
-        const res = await request.post('/food2'); 
+    it('testing read we get from API ', async () => {
+        const res= await request.get('/food/1');
         expect(res.status).toEqual(200);
+            });
+        
+
+    it('testing updated Data we get from API ', async () => {
+        const res= await request.put('/food/1').send(obj);
+        expect(res.status).toEqual(200);
+            });
+
+    it('testing deleted data from api', async () => {
+        const res = await request.delete('/food/1');
+        expect(res.status).toEqual(204);
     });
   
 });  
 
-});
