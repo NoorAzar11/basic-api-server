@@ -7,7 +7,7 @@ const { Sequelize, DataTypes } = require('sequelize');
 let sequelizeOptions = {};
 let sequelize = new Sequelize(POSTGRES_URI, sequelizeOptions);
 
-const foodData = require('./food.js');
+const foodData = require('./food');
 
 module.exports = {
   db: sequelize,
