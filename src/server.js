@@ -15,6 +15,11 @@ function start(port) {
     app.listen(port, ()=> console.log(`Hello from the OtherSide : ${port}`))
 }
 
+app.get('/',(req,res)=>{
+    res.send('Welcome To Home Page')
+});
+
+
 app.use('*', notFoundHandler);
 app.use(errorHandler);
 

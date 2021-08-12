@@ -23,6 +23,17 @@ it('handles not found requset try again 2',async()=>{
     expect(response.status).toEqual(404);
 });
 
+it('handles not found requset try again 2',async()=>{
+
+    let obj={
+        foodDatatype:"hello"
+
+    }
+
+    const response=await (await request.put('/food/1')).send(obj);
+    expect(response.status).toEqual(200);
+});
+
     it('testing Data we get from API ', async () => {
         const res = await request.get('/food1');
         expect(res.status).toEqual(200);
