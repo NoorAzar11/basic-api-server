@@ -3,7 +3,7 @@
 const Food = (sequelize, DataTypes) => sequelize.define('food', {
   
   foodName: {
-    type: DataTypes.STRING,
+    type:DataTypes.STRING,
     allowNull: false,
 
   },
